@@ -1,0 +1,7 @@
+docker network create --driver bridge network_001
+st1: docker run -it --name B3 --network network_001 busybox 
+st2:  docker run -it --name B4 --network network_001 -p 9999:80 busybox    
+=> var/www: httpd
+=> var/www: vi index.html(Hell world!!!)
+
+st3: docker network connect bridge(name_network) B3 
