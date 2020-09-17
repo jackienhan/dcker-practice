@@ -1,0 +1,9 @@
+st1: docker run -it -v /docker/share_data_02:/home/data_02 --name share_02 ubuntu (sahre host for container)
+
+st2: docker volume create --opt device=/docker/share_data_02 --opt type=none --opt o=bind volume_003 (create volume)
+   (info volume: docker volume inspect volume_003)
+
+st3:  docker run -it -v volume_003:/home/data_share_volume_003 --name name_container ubuntu (share volume for container)
+
+or: docker run -it --name share_width_mount --mount source=volume_003,target=/home/data_share_003 centos (share volume for container)
+ * docker run -it --name share_container --volumes-from share_width_mount centos-ssh:1.0.0 (share container each other)
